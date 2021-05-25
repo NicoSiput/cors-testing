@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  min-height: 80px;
+  background-color: black;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 23px;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+header h1 span {
+  padding: 5px;
+  background-color: teal;
+}
+
+header a {
+  font-size: 23px;
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: teal;
+}
