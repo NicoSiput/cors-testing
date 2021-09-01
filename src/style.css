@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+main {
+  background-color: #424242;
+  min-height: calc(100vh - 80px);
+}
 
 header {
   display: flex;
@@ -32,4 +36,19 @@ header a {
 
 header a:hover {
   color: teal;
+}
+
+.card {
+  background-color: #313030;
+}
+
+.result-hidden {
+  display: none;
+}
+
+.result pre {
+  white-space: pre-wrap;
+  max-height: 250px;
+  background-color: black;
+  color: white;
 }

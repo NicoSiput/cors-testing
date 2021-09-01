@@ -4,14 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
 
 <body>
     <header>
-        <h1>current base url: <span>localhost:5000</span> | </h1>
+        <h1>current base url: <span id="base-url">localhost:5000</span> | </h1>
         <a href="javascript:void(0);" id="btn-changeURL">change url</a>
     </header>
+
+    <main>
+        <div class="container">
+            <button class="btn btn-primary my-3" id="btn-addEndpoint">Add endpoint</button>
+
+            <div class="list-endpoint">
+            </div>
+        </div>
+        </div>
+    </main>
 </body>
 
 </html>

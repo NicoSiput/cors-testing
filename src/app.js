@@ -1,5 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('TEST');
-});
+import main from './scripts/main';
+document.addEventListener('DOMContentLoaded', main);
