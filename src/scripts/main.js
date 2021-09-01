@@ -13,32 +13,49 @@ const mainPage = () => {
   });
 
   const btnAddEndpoint = document.querySelector('#btn-addEndpoint');
-  const listEndpoint = document.querySelector('.list-endpoint');
   btnAddEndpoint.addEventListener('click', () => {
-    listEndpoint.innerHTML += addItemEndpoint();
+    doAddNewEndpoint();
+  });
 
-    const endpoints = document.querySelectorAll('.endpoint');
-    endpoints.forEach((endpointInput) => {
-      endpointInput.addEventListener('input', (e) => {
-        endpointInput.setAttribute('value', e.target.value);
-      });
-      endpointInput.addEventListener('keypress', async (e) => {
-        if (e.key === 'Enter') {
-          const parentInput = endpointInput.parentElement.parentElement.parentNode;
-          const resultIndex = parentInput.querySelector('.result pre');
-          try {
-            resultIndex.innerHTML = 'Loading...';
-            const response = await hitEndpoint(endpointInput.value);
-            resultIndex.innerHTML = JSON.stringify(response, undefined, 2);
-          } catch (error) {
-            resultIndex.innerText = error;
-          }
-        }
-      });
-    });
+  window.addEventListener('keydown', (e) => {
+    const key = e.keyCode;
+    if (key === 114) {
+      // F3
+      e.preventDefault();
+      doAddNewEndpoint();
+    }
   });
 };
 
+const doAddNewEndpoint = () => {
+  const listEndpoint = document.querySelector('.list-endpoint');
+  let temp = addItemEndpoint();
+  temp += listEndpoint.innerHTML;
+
+  listEndpoint.innerHTML = temp;
+
+  const endpoints = document.querySelectorAll('.endpoint');
+  endpoints.forEach((endpointInput) => {
+    endpointInput.addEventListener('input', (e) => {
+      endpointInput.setAttribute('value', e.target.value);
+    });
+    endpointInput.addEventListener('keypress', async (e) => {
+      if (e.key === 'Enter') {
+        const parentInput = endpointInput.parentElement.parentElement.parentNode;
+        const resultIndex = parentInput.querySelector('.result pre');
+        try {
+          resultIndex.innerHTML = 'Loading...';
+          const response = await hitEndpoint(endpointInput.value);
+          resultIndex.innerHTML = JSON.stringify(response, undefined, 2);
+        } catch (error) {
+          resultIndex.innerText = error;
+        }
+      }
+    });
+  });
+
+  endpoints[0].focus();
+};
 const renderURL = () => {
   const baseUrlHTML = document.querySelector('#base-url');
   baseUrlHTML.innerHTML = getCurrentURL();
